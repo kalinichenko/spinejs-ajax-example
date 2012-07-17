@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<html manifest="cache.manifest">
+<head>
+  <title>Payment's list</title>
+  
+  <link rel="stylesheet" href="style.css" type="text/css" charset="utf-8">
+
+  <script src="json2.js" type="text/javascript" charset="utf-8"></script>
+  <script src="jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="jquery.tmpl.js" type="text/javascript" charset="utf-8"></script>
+
+  <script src="spine.js" type="text/javascript" charset="utf-8"></script>
+  <script src="ajax.js" type="text/javascript" charset="utf-8"></script>
+  <script src="payments.js" type="text/javascript" charset="utf-8"></script>
+  
+  <script type="text/x-jquery-tmpl" id="itemTemplate">
+    <tr>
+    <td>${NUM_DOC}</td>
+    <td>${RCPT_NAME}</td>
+    <td>${RCPT_ACCOUNT}</td>
+    <td>${AMOUNT}</td>
+    <td>${STATUS}</td>
+    </tr>
+  </script>
+
+  <script type="text/x-jquery-tmpl" id="viewTemplate">
+    <div>
+    <form>
+    num_doc: ${NUM_DOC}
+    date_doc: ${DATE_DOC}
+    amount: ${AMOUNT}
+    cln_name: ${CLN_NAME}
+    cln_okpo: ${CLN_OKPO}
+    cln_account: ${CLN_ACCOUNT}
+    cln_bank_name: ${CLN_BANK_NAME}
+    cln_bank_mfo: ${CLN_BANK_MFO}
+    rcpt_name: ${RCPT_NAME}
+    rcpt_okpo: ${RCPT_OKPO}
+    rcpt_account: ${RCPT_ACCOUNT}
+    rcpt_bank_name: ${RCPT_BANK_NAME}
+    rcpt_bank_mfo: ${RCPT_BANK_MFO}
+    payment_details: ${PAYMENT_DETAILS}
+    value_date: ${VALUE_DATE}
+    rcpt_country_code: ${RCPT_COUNTRY_CODE}
+    cln_country_code: ${CLN_COUNTRY_CODE}
+    </form>
+    <input type="button" value="delete" id="delete"/>
+    <input type="button" value="edit" id="edit"/>
+    <input type="button" value="close" id="close"/>
+    </div>
+  </script>
+
+  <script type="text/x-jquery-tmpl" id="editTemplate">
+    <div>
+    <form>
+    num_doc:<input type="text" id="num_doc" name="NUM_DOC" value=${NUM_DOC}></input>
+    date_doc:<input type="text" id="date_doc" name="DATE_DOC" value=${DATE_DOC}></input>
+    value_date:<input type="text" id="value_date" name="VALUE_DATE" value=${VALUE_DATE}></input>
+
+    amount:<input type="text" id="amount" name="AMOUNT" value=${AMOUNT}></input>
+
+    cln_name: ${CLN_NAME}
+    cln_okpo: ${CLN_OKPO}
+    cln_account: ${CLN_ACCOUNT}
+    cln_bank_name: ${CLN_BANK_NAME}
+    cln_bank_mfo: ${CLN_BANK_MFO}
+    rcpt_name:<input type="text" id="RCPT_NAME" name="RCPT_NAME" value=${RCPT_NAME}></input>
+    rcpt_okpo: ${RCPT_OKPO}
+    rcpt_account:<input type="text" id="RCPT_ACCOUNT" name="RCPT_ACCOUNT" value=${RCPT_ACCOUNT}></input>
+    rcpt_bank_name: ${RCPT_BANK_NAME}
+    rcpt_bank_mfo: ${RCPT_BANK_MFO}
+    payment_details:<input type="text" id="payment_details" value=${PAYMENT_DETAILS}></input>
+    rcpt_country_code: ${RCPT_COUNTRY_CODE}
+    cln_country_code: ${CLN_COUNTRY_CODE}
+    </form>
+    <input type="button" value="save" id="save"/>
+    <input type="button" value="close" id="close"/>
+    </div>
+  </script>
+
+
+</head>
+<body>
+  <div id="content" class="listing">
+    <div id="list">
+      <input type="button" value="+" id="add"/>
+      <table id="payments">
+        <tr>
+          <th>num_doc</th>
+          <th>rcpt_name</th>
+          <th>rcpt_account</th>
+          <th>amount</th>
+          <th>status</th>
+        <tr>
+      </table>
+    </div>
+    <div id="doc" />
+  </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<project name="ibank-ws" default="compile" basedir=".">
+
+	<target name="init">
+		<get src="http://repo1.maven.org/maven2/asm/asm/3.1/asm-3.1.jar" 
+	   		dest="build/WEB-INF/lib/" />
+		<get src="http://repo1.maven.org/maven2/com/sun/jersey/jersey-server/1.13/jersey-server-1.13.jar" 
+	   		dest="build/WEB-INF/lib/" />
+		<get src="http://repo1.maven.org/maven2/com/sun/jersey/jersey-servlet/1.13/jersey-servlet-1.13.jar" 
+	   		dest="build/WEB-INF/lib/" />
+		<get src="http://repo1.maven.org/maven2/com/sun/jersey/jersey-core/1.13/jersey-core-1.13.jar"
+	   		dest="build/WEB-INF/lib/" />		
+	</target>
+
+	<target name="compile">
+		 <javac srcdir="src/java"
+        	 destdir="build/WEB-INF/classes"
+         	debug="on">
+         	<classpath>
+	         	<fileset dir = "build/WEB-INF/lib">
+	         		<include name="**/*.jar"/>
+	         	</fileset>
+         	</classpath>
+         </javac>
+	</target>
+
+	<target name="clear">
+		<delete>
+		    <fileset dir="build/WEB-INF/lib" includes="**/*.jar"/>
+		    <fileset dir="build/WEB-INF/classes" includes="**/*.class"/>
+  		</delete>
+	</target>
+
+
+</project>

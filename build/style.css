@@ -1,0 +1,15 @@
+.viewing #list, .editing #list {
+	display: none;
+}
+
+.listing #list {
+	display: block;
+}
+
+.viewing #doc, .editing #doc  {
+	display: block;
+}
+
+.listing #doc {
+	display: none;
+}
