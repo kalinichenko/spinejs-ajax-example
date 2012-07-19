@@ -2,6 +2,8 @@
 <project name="ibank-ws" default="compile" basedir=".">
 
 	<target name="init">
+		<mkdir dir="build/WEB-INF/lib"/>
+		<mkdir dir="build/WEB-INF/classes"/>
 		<get src="http://repo1.maven.org/maven2/asm/asm/3.1/asm-3.1.jar" 
 	   		dest="build/WEB-INF/lib/" />
 		<get src="http://repo1.maven.org/maven2/com/sun/jersey/jersey-server/1.13/jersey-server-1.13.jar" 
