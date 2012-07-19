@@ -1,3 +1,4 @@
+/*
 .viewing #list, .editing #list {
 	display: none;
 }
@@ -12,4 +13,8 @@
 
 .listing #doc {
 	display: none;
+}
+*/
+.stack > *:not(.active) {
+  display: none
 }
