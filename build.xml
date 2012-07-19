@@ -14,7 +14,7 @@
 	   		dest="build/WEB-INF/lib/" />		
 	</target>
 
-	<target name="compile" depends="init">
+	<target name="compile">
 		 <javac srcdir="src/java"
         	 destdir="build/WEB-INF/classes"
          	debug="on">
