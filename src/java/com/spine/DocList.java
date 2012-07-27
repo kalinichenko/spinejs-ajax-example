@@ -3,25 +3,45 @@ package com.spine;
 import java.io.File;
 import java.io.IOException;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 
 import java.io.*;
+import java.util.logging.*;
+//import javax.servlet.*;
+
+//import org.apache.juli.logging.Log;^M
+//import org.apache.juli.logging.LogFactory;
 
 @Path("payments")
 public class DocList {
-	@GET
-    @Produces("application/json; charset=UTF-8")
-    public String get() throws IOException {
+    private static Logger myLogger = Logger.getLogger(DocList.class.getName());
 
-		String r = getJSON();
-		return r;
+    @GET
+    @Path("/new")
+    @Produces("application/json; charset=UTF-8")
+    public String get(@PathParam("id") String id) {
+	//myLogger.info("Ah Yeah Baby - that's the end of System.out.println");
+	//	ServletContext context = getServletContext();
+	// context.log("Hello!");
+	//	if (id.matches("-1")) {
+	    myLogger.info("id="+id);
+	    return "{\"NUM_DOC\":\"1\"}" ;
+	    //	} else {
+	    //	    String r = getJSON();
+	    //	    return r;
+	    //	}
+    }
+
+    @GET
+    @Produces("application/json; charset=UTF-8")
+    public String get() {
+	//myLogger.info("Ah Yeah Baby - that's the end of System.out.println");
+	//	ServletContext context = getServletContext();
+	// context.log("Hello!");
+	    String r = getJSON();
+	    return r;
+
     }
 
     private String getJSON() {
@@ -55,8 +75,12 @@ public class DocList {
 	public Response put(@PathParam("id") String id, String data) {
 		System.out.println(id);
 		System.out.println(data);
-		return Response.status(400).entity("{\"code\": \"1\", \"message\": \"msg\"}").build();
+		//return Response.status(400).entity("{\"code\": \"1\", \"message\": \"msg\"}").build();
 		//throw new BadRequestException("some message");
+		try {
+		Thread.sleep(10000L);
+		} catch (Exception e) {}
+		return Response.ok().build();
 	}
 
 	@POST

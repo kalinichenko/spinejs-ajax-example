@@ -15,9 +15,10 @@
   <script src="manager.js" type="text/javascript" charset="utf-8"></script>
   <script src="ajax.js" type="text/javascript" charset="utf-8"></script>
   <script src="payment1.js" type="text/javascript" charset="utf-8"></script>
-  
+
   <script type="text/x-jquery-tmpl" id="itemTemplate">
     <tr>
+    <td class="group"><input type="checkbox"></td>
     <td>${NUM_DOC}</td>
     <td>${RCPT_NAME}</td>
     <td>${RCPT_ACCOUNT}</td>
@@ -46,6 +47,11 @@
     value_date: ${VALUE_DATE}
     rcpt_country_code: ${RCPT_COUNTRY_CODE}
     cln_country_code: ${CLN_COUNTRY_CODE}
+    {{if $saving}}
+    status: ${saving}
+    {{else}}
+    status: ${STATUS}
+    {{/if}}
     </form>
     <input type="button" value="delete" id="delete"/>
     <input type="button" value="edit" id="edit"/>
@@ -86,9 +92,13 @@
 <body>
   <div id="content" class="listing">
     <div id="list">
-      <input type="button" value="+" id="add"/>
+      <div class="toolbar">
+	<input type="button" value="new" class="new"/>
+	<input type="button" value="copy" class="copy"/>
+      </div>
       <table id="payments">
         <tr>
+	  <th></th>
           <th>num_doc</th>
           <th>rcpt_name</th>
           <th>rcpt_account</th>
@@ -100,5 +110,8 @@
     <div id="view"> </div>
     <div id="edit"> </div>
   </div>
+  <footer>
+    <div class="count"><span class="countVal"></span> checked</div>
+  </footer>
 </body>
 </html>
